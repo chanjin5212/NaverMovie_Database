@@ -14,6 +14,7 @@
 <img src = "https://user-images.githubusercontent.com/97499271/166865737-8e5b8679-9d4d-455d-bfc9-e6e911b48ab3.png">
 
 - **논리 ERD** 작성 후, **물리 ERD** 작성을 통해 최종적으로 관리할 데이터를 선택하고 **제약사항**을 추가한다.
+- **Relationship**에서 **N:N의 관계**는 가질 수 없기 때문에, 따로 테이블을 추가해서 관리하였다.(ex.영화-장르, 영화-국가)
 
 -------------------------------
 
@@ -23,6 +24,7 @@
 - **테이블 정의서**를 작성해 물리 데이터 베이스에 이식할 준비를 한다.
 
 ```sql
+-- 영화
 create table tblMovie (
 	seq number primary key,
 	rseq number not null references tblRating(seq),
@@ -41,6 +43,7 @@ create table tblMovie (
 ### 4. DML 작성
 
 ```sql
+-- 영화인
 insert into tblMoviePerson (seq, name, birthday, height, weight, aname) values (seq.nextVal, '에디 레드메인', '1982-01-06', 183, null,'Edward John David Redmayne');
 insert into tblMoviePerson (seq, name, birthday, height, weight, aname) values (seq.nextVal, '주드 로', '1972-12-29', 178, 66, '쥬드 로우');
 insert into tblMoviePerson (seq, name, birthday, height, weight, aname) values (seq.nextVal, '매즈 미켈슨', '1965-11-22', '183', null, null);
@@ -55,3 +58,9 @@ insert into tblMoviePerson (seq, name, birthday, height, weight, aname) values (
 ```
 
 - 최종적으로 **Table**에 추가할 **데이터**를 작성한다.
+
+### 5. Feedback🚑
+#### ↪ 모델링 작업의 부족
+- **ERD작성**에서, **정보 수집**이 제대로 이루어지지 않아 **null**인 경우에도 **not null**로 지정된 경우가 많아서 바꿔야하는 번거로움이 굉장히 많았다. **모델링 작업**을 좀 더 확실하게 할 필요성이 있어 보인다.
+#### ↪ 시퀀스 객체 이름
+- seq.nextval 을 통해서 시퀀스 번호를 만들었는데, 모두 같은 이름을 사용해 drop, create를 여러번 반복했다. 따라서 나중에 추가되는 데이터의 경우 마지막 시퀀스 번호가 저장되어 있지 않기 때문에, 다시 찾아야 하는 번거로움이 있다. 그렇기 때문에 시퀀스 객체의 이름을 테이블마다 다르게 해서 관리할 필요가 있을 것 같다.
