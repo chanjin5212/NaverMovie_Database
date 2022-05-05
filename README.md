@@ -11,3 +11,8 @@
 ### 2. ERD 작성
 #### - 사용한 프로그램 : EXERD <img src = "https://user-images.githubusercontent.com/97499271/166865359-0b33d34d-b67b-45e5-8eeb-07e608f193b4.png" width="20" height="20"/>
 
+<img src = "https://user-images.githubusercontent.com/97499271/166865737-8e5b8679-9d4d-455d-bfc9-e6e911b48ab3.png">
+
+-------------------------------
+
+### 3. 테이블 정의서 작성
